@@ -15,5 +15,10 @@ namespace MySchedule
         {
             InitializeComponent();
         }
+
+        private void writeMenu_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

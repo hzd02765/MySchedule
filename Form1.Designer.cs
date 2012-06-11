@@ -41,26 +41,26 @@
             this.usingMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.appinfoMenu = new System.Windows.Forms.ToolStripMenuItem();
             this.dateselectGroup = new System.Windows.Forms.GroupBox();
-            this.listviewGroup = new System.Windows.Forms.GroupBox();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.scheduleListBox = new System.Windows.Forms.ListBox();
-            this.startTextBox = new System.Windows.Forms.TextBox();
-            this.endTextBox = new System.Windows.Forms.TextBox();
-            this.subjectTextBox = new System.Windows.Forms.TextBox();
-            this.contentTextBox = new System.Windows.Forms.TextBox();
-            this.starttimeDomainUpDown = new System.Windows.Forms.DomainUpDown();
-            this.endtimeDomainUpDown = new System.Windows.Forms.DomainUpDown();
-            this.inputButton = new System.Windows.Forms.Button();
-            this.clearButton = new System.Windows.Forms.Button();
-            this.displayButton = new System.Windows.Forms.Button();
-            this.updateButton = new System.Windows.Forms.Button();
-            this.deleteButton = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.clearButton = new System.Windows.Forms.Button();
+            this.inputButton = new System.Windows.Forms.Button();
+            this.endtimeDomainUpDown = new System.Windows.Forms.DomainUpDown();
+            this.starttimeDomainUpDown = new System.Windows.Forms.DomainUpDown();
+            this.contentTextBox = new System.Windows.Forms.TextBox();
+            this.subjectTextBox = new System.Windows.Forms.TextBox();
+            this.endTextBox = new System.Windows.Forms.TextBox();
+            this.startTextBox = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.listviewGroup = new System.Windows.Forms.GroupBox();
+            this.deleteButton = new System.Windows.Forms.Button();
+            this.updateButton = new System.Windows.Forms.Button();
+            this.displayButton = new System.Windows.Forms.Button();
+            this.scheduleListBox = new System.Windows.Forms.ListBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.dateselectGroup.SuspendLayout();
             this.listviewGroup.SuspendLayout();
@@ -178,174 +178,31 @@
             this.dateselectGroup.TabStop = false;
             this.dateselectGroup.Text = "日付選択";
             // 
-            // listviewGroup
+            // label6
             // 
-            this.listviewGroup.Controls.Add(this.deleteButton);
-            this.listviewGroup.Controls.Add(this.updateButton);
-            this.listviewGroup.Controls.Add(this.displayButton);
-            this.listviewGroup.Controls.Add(this.scheduleListBox);
-            this.listviewGroup.Controls.Add(this.label5);
-            this.listviewGroup.Location = new System.Drawing.Point(243, 39);
-            this.listviewGroup.Name = "listviewGroup";
-            this.listviewGroup.Size = new System.Drawing.Size(369, 400);
-            this.listviewGroup.TabIndex = 2;
-            this.listviewGroup.TabStop = false;
-            this.listviewGroup.Text = "予定リスト表示";
+            this.label6.BackColor = System.Drawing.Color.Silver;
+            this.label6.Location = new System.Drawing.Point(45, 280);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(180, 1);
+            this.label6.TabIndex = 13;
             // 
-            // monthCalendar1
+            // clearButton
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(4, 24);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 0;
+            this.clearButton.Location = new System.Drawing.Point(128, 371);
+            this.clearButton.Name = "clearButton";
+            this.clearButton.Size = new System.Drawing.Size(75, 23);
+            this.clearButton.TabIndex = 12;
+            this.clearButton.Text = "クリア";
+            this.clearButton.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // inputButton
             // 
-            this.label1.AutoSize = true;
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label1.Location = new System.Drawing.Point(12, 221);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "開始";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label2.Location = new System.Drawing.Point(12, 246);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "終了";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 269);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "登録";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label4.Location = new System.Drawing.Point(12, 288);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(29, 12);
-            this.label4.TabIndex = 4;
-            this.label4.Text = "件名";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
-            this.label5.Location = new System.Drawing.Point(7, 19);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 12);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "予定";
-            // 
-            // scheduleListBox
-            // 
-            this.scheduleListBox.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.scheduleListBox.FormattingEnabled = true;
-            this.scheduleListBox.ItemHeight = 12;
-            this.scheduleListBox.Location = new System.Drawing.Point(9, 34);
-            this.scheduleListBox.Name = "scheduleListBox";
-            this.scheduleListBox.Size = new System.Drawing.Size(354, 328);
-            this.scheduleListBox.TabIndex = 1;
-            // 
-            // startTextBox
-            // 
-            this.startTextBox.Location = new System.Drawing.Point(47, 219);
-            this.startTextBox.Name = "startTextBox";
-            this.startTextBox.ReadOnly = true;
-            this.startTextBox.Size = new System.Drawing.Size(100, 19);
-            this.startTextBox.TabIndex = 5;
-            // 
-            // endTextBox
-            // 
-            this.endTextBox.Location = new System.Drawing.Point(47, 244);
-            this.endTextBox.Name = "endTextBox";
-            this.endTextBox.ReadOnly = true;
-            this.endTextBox.Size = new System.Drawing.Size(100, 19);
-            this.endTextBox.TabIndex = 6;
-            // 
-            // subjectTextBox
-            // 
-            this.subjectTextBox.Location = new System.Drawing.Point(47, 285);
-            this.subjectTextBox.MaxLength = 20;
-            this.subjectTextBox.Name = "subjectTextBox";
-            this.subjectTextBox.Size = new System.Drawing.Size(177, 19);
-            this.subjectTextBox.TabIndex = 7;
-            // 
-            // contentTextBox
-            // 
-            this.contentTextBox.Location = new System.Drawing.Point(8, 307);
-            this.contentTextBox.Multiline = true;
-            this.contentTextBox.Name = "contentTextBox";
-            this.contentTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.contentTextBox.Size = new System.Drawing.Size(216, 58);
-            this.contentTextBox.TabIndex = 8;
-            // 
-            // starttimeDomainUpDown
-            // 
-            this.starttimeDomainUpDown.Items.Add("23:30");
-            this.starttimeDomainUpDown.Items.Add("23:00");
-            this.starttimeDomainUpDown.Items.Add("22:30");
-            this.starttimeDomainUpDown.Items.Add("22:00");
-            this.starttimeDomainUpDown.Items.Add("21:30");
-            this.starttimeDomainUpDown.Items.Add("21:00");
-            this.starttimeDomainUpDown.Items.Add("20:30");
-            this.starttimeDomainUpDown.Items.Add("20:00");
-            this.starttimeDomainUpDown.Items.Add("19:30");
-            this.starttimeDomainUpDown.Items.Add("19:00");
-            this.starttimeDomainUpDown.Items.Add("18:30");
-            this.starttimeDomainUpDown.Items.Add("18:00");
-            this.starttimeDomainUpDown.Items.Add("17:30");
-            this.starttimeDomainUpDown.Items.Add("17:00");
-            this.starttimeDomainUpDown.Items.Add("16:30");
-            this.starttimeDomainUpDown.Items.Add("16:00");
-            this.starttimeDomainUpDown.Items.Add("15:30");
-            this.starttimeDomainUpDown.Items.Add("15:00");
-            this.starttimeDomainUpDown.Items.Add("14:30");
-            this.starttimeDomainUpDown.Items.Add("14:00");
-            this.starttimeDomainUpDown.Items.Add("13:30");
-            this.starttimeDomainUpDown.Items.Add("13:00");
-            this.starttimeDomainUpDown.Items.Add("12:30");
-            this.starttimeDomainUpDown.Items.Add("12:00");
-            this.starttimeDomainUpDown.Items.Add("11:30");
-            this.starttimeDomainUpDown.Items.Add("11:00");
-            this.starttimeDomainUpDown.Items.Add("10:30");
-            this.starttimeDomainUpDown.Items.Add("10:00");
-            this.starttimeDomainUpDown.Items.Add("09:30");
-            this.starttimeDomainUpDown.Items.Add("09:00");
-            this.starttimeDomainUpDown.Items.Add("08:30");
-            this.starttimeDomainUpDown.Items.Add("08:00");
-            this.starttimeDomainUpDown.Items.Add("07:30");
-            this.starttimeDomainUpDown.Items.Add("07:00");
-            this.starttimeDomainUpDown.Items.Add("06:30");
-            this.starttimeDomainUpDown.Items.Add("06:00");
-            this.starttimeDomainUpDown.Items.Add("05:30");
-            this.starttimeDomainUpDown.Items.Add("05:00");
-            this.starttimeDomainUpDown.Items.Add("04:30");
-            this.starttimeDomainUpDown.Items.Add("04:00");
-            this.starttimeDomainUpDown.Items.Add("03:30");
-            this.starttimeDomainUpDown.Items.Add("03:00");
-            this.starttimeDomainUpDown.Items.Add("02:30");
-            this.starttimeDomainUpDown.Items.Add("02:00");
-            this.starttimeDomainUpDown.Items.Add("01:30");
-            this.starttimeDomainUpDown.Items.Add("01:00");
-            this.starttimeDomainUpDown.Items.Add("00:30");
-            this.starttimeDomainUpDown.Items.Add("00:00");
-            this.starttimeDomainUpDown.Location = new System.Drawing.Point(153, 219);
-            this.starttimeDomainUpDown.Name = "starttimeDomainUpDown";
-            this.starttimeDomainUpDown.Size = new System.Drawing.Size(71, 19);
-            this.starttimeDomainUpDown.TabIndex = 9;
-            this.starttimeDomainUpDown.Text = "domainUpDown1";
+            this.inputButton.Location = new System.Drawing.Point(47, 371);
+            this.inputButton.Name = "inputButton";
+            this.inputButton.Size = new System.Drawing.Size(75, 23);
+            this.inputButton.TabIndex = 11;
+            this.inputButton.Text = "登録";
+            this.inputButton.UseVisualStyleBackColor = true;
             // 
             // endtimeDomainUpDown
             // 
@@ -402,45 +259,160 @@
             this.endtimeDomainUpDown.Size = new System.Drawing.Size(71, 19);
             this.endtimeDomainUpDown.TabIndex = 10;
             this.endtimeDomainUpDown.Text = "domainUpDown2";
+            this.endtimeDomainUpDown.Wrap = true;
             // 
-            // inputButton
+            // starttimeDomainUpDown
             // 
-            this.inputButton.Location = new System.Drawing.Point(47, 371);
-            this.inputButton.Name = "inputButton";
-            this.inputButton.Size = new System.Drawing.Size(75, 23);
-            this.inputButton.TabIndex = 11;
-            this.inputButton.Text = "登録";
-            this.inputButton.UseVisualStyleBackColor = true;
+            this.starttimeDomainUpDown.Items.Add("23:30");
+            this.starttimeDomainUpDown.Items.Add("23:00");
+            this.starttimeDomainUpDown.Items.Add("22:30");
+            this.starttimeDomainUpDown.Items.Add("22:00");
+            this.starttimeDomainUpDown.Items.Add("21:30");
+            this.starttimeDomainUpDown.Items.Add("21:00");
+            this.starttimeDomainUpDown.Items.Add("20:30");
+            this.starttimeDomainUpDown.Items.Add("20:00");
+            this.starttimeDomainUpDown.Items.Add("19:30");
+            this.starttimeDomainUpDown.Items.Add("19:00");
+            this.starttimeDomainUpDown.Items.Add("18:30");
+            this.starttimeDomainUpDown.Items.Add("18:00");
+            this.starttimeDomainUpDown.Items.Add("17:30");
+            this.starttimeDomainUpDown.Items.Add("17:00");
+            this.starttimeDomainUpDown.Items.Add("16:30");
+            this.starttimeDomainUpDown.Items.Add("16:00");
+            this.starttimeDomainUpDown.Items.Add("15:30");
+            this.starttimeDomainUpDown.Items.Add("15:00");
+            this.starttimeDomainUpDown.Items.Add("14:30");
+            this.starttimeDomainUpDown.Items.Add("14:00");
+            this.starttimeDomainUpDown.Items.Add("13:30");
+            this.starttimeDomainUpDown.Items.Add("13:00");
+            this.starttimeDomainUpDown.Items.Add("12:30");
+            this.starttimeDomainUpDown.Items.Add("12:00");
+            this.starttimeDomainUpDown.Items.Add("11:30");
+            this.starttimeDomainUpDown.Items.Add("11:00");
+            this.starttimeDomainUpDown.Items.Add("10:30");
+            this.starttimeDomainUpDown.Items.Add("10:00");
+            this.starttimeDomainUpDown.Items.Add("09:30");
+            this.starttimeDomainUpDown.Items.Add("09:00");
+            this.starttimeDomainUpDown.Items.Add("08:30");
+            this.starttimeDomainUpDown.Items.Add("08:00");
+            this.starttimeDomainUpDown.Items.Add("07:30");
+            this.starttimeDomainUpDown.Items.Add("07:00");
+            this.starttimeDomainUpDown.Items.Add("06:30");
+            this.starttimeDomainUpDown.Items.Add("06:00");
+            this.starttimeDomainUpDown.Items.Add("05:30");
+            this.starttimeDomainUpDown.Items.Add("05:00");
+            this.starttimeDomainUpDown.Items.Add("04:30");
+            this.starttimeDomainUpDown.Items.Add("04:00");
+            this.starttimeDomainUpDown.Items.Add("03:30");
+            this.starttimeDomainUpDown.Items.Add("03:00");
+            this.starttimeDomainUpDown.Items.Add("02:30");
+            this.starttimeDomainUpDown.Items.Add("02:00");
+            this.starttimeDomainUpDown.Items.Add("01:30");
+            this.starttimeDomainUpDown.Items.Add("01:00");
+            this.starttimeDomainUpDown.Items.Add("00:30");
+            this.starttimeDomainUpDown.Items.Add("00:00");
+            this.starttimeDomainUpDown.Location = new System.Drawing.Point(153, 219);
+            this.starttimeDomainUpDown.Name = "starttimeDomainUpDown";
+            this.starttimeDomainUpDown.Size = new System.Drawing.Size(71, 19);
+            this.starttimeDomainUpDown.TabIndex = 9;
+            this.starttimeDomainUpDown.Text = "domainUpDown1";
+            this.starttimeDomainUpDown.Wrap = true;
             // 
-            // clearButton
+            // contentTextBox
             // 
-            this.clearButton.Location = new System.Drawing.Point(128, 371);
-            this.clearButton.Name = "clearButton";
-            this.clearButton.Size = new System.Drawing.Size(75, 23);
-            this.clearButton.TabIndex = 12;
-            this.clearButton.Text = "クリア";
-            this.clearButton.UseVisualStyleBackColor = true;
+            this.contentTextBox.Location = new System.Drawing.Point(8, 307);
+            this.contentTextBox.Multiline = true;
+            this.contentTextBox.Name = "contentTextBox";
+            this.contentTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.contentTextBox.Size = new System.Drawing.Size(216, 58);
+            this.contentTextBox.TabIndex = 8;
             // 
-            // displayButton
+            // subjectTextBox
             // 
-            this.displayButton.Location = new System.Drawing.Point(126, 371);
-            this.displayButton.Name = "displayButton";
-            this.displayButton.Size = new System.Drawing.Size(75, 23);
-            this.displayButton.TabIndex = 2;
-            this.displayButton.Text = "表示";
-            this.displayButton.UseVisualStyleBackColor = true;
+            this.subjectTextBox.Location = new System.Drawing.Point(47, 285);
+            this.subjectTextBox.MaxLength = 20;
+            this.subjectTextBox.Name = "subjectTextBox";
+            this.subjectTextBox.Size = new System.Drawing.Size(177, 19);
+            this.subjectTextBox.TabIndex = 7;
             // 
-            // updateButton
+            // endTextBox
             // 
-            this.updateButton.Location = new System.Drawing.Point(207, 371);
-            this.updateButton.Name = "updateButton";
-            this.updateButton.Size = new System.Drawing.Size(75, 23);
-            this.updateButton.TabIndex = 3;
-            this.updateButton.Text = "修正";
-            this.updateButton.UseVisualStyleBackColor = true;
+            this.endTextBox.Location = new System.Drawing.Point(47, 244);
+            this.endTextBox.Name = "endTextBox";
+            this.endTextBox.ReadOnly = true;
+            this.endTextBox.Size = new System.Drawing.Size(100, 19);
+            this.endTextBox.TabIndex = 6;
+            // 
+            // startTextBox
+            // 
+            this.startTextBox.Location = new System.Drawing.Point(47, 219);
+            this.startTextBox.Name = "startTextBox";
+            this.startTextBox.ReadOnly = true;
+            this.startTextBox.Size = new System.Drawing.Size(100, 19);
+            this.startTextBox.TabIndex = 5;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label4.Location = new System.Drawing.Point(12, 288);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(29, 12);
+            this.label4.TabIndex = 4;
+            this.label4.Text = "件名";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(12, 269);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "登録";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label2.Location = new System.Drawing.Point(12, 246);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "終了";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label1.Location = new System.Drawing.Point(12, 221);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "開始";
+            // 
+            // monthCalendar1
+            // 
+            this.monthCalendar1.Location = new System.Drawing.Point(4, 24);
+            this.monthCalendar1.Name = "monthCalendar1";
+            this.monthCalendar1.TabIndex = 0;
+            // 
+            // listviewGroup
+            // 
+            this.listviewGroup.Controls.Add(this.deleteButton);
+            this.listviewGroup.Controls.Add(this.updateButton);
+            this.listviewGroup.Controls.Add(this.displayButton);
+            this.listviewGroup.Controls.Add(this.scheduleListBox);
+            this.listviewGroup.Controls.Add(this.label5);
+            this.listviewGroup.Location = new System.Drawing.Point(243, 39);
+            this.listviewGroup.Name = "listviewGroup";
+            this.listviewGroup.Size = new System.Drawing.Size(369, 400);
+            this.listviewGroup.TabIndex = 2;
+            this.listviewGroup.TabStop = false;
+            this.listviewGroup.Text = "予定リスト表示";
             // 
             // deleteButton
             // 
+            this.deleteButton.Enabled = false;
             this.deleteButton.Location = new System.Drawing.Point(288, 371);
             this.deleteButton.Name = "deleteButton";
             this.deleteButton.Size = new System.Drawing.Size(75, 23);
@@ -448,13 +420,46 @@
             this.deleteButton.Text = "削除";
             this.deleteButton.UseVisualStyleBackColor = true;
             // 
-            // label6
+            // updateButton
             // 
-            this.label6.BackColor = System.Drawing.Color.Silver;
-            this.label6.Location = new System.Drawing.Point(45, 280);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(180, 1);
-            this.label6.TabIndex = 13;
+            this.updateButton.Enabled = false;
+            this.updateButton.Location = new System.Drawing.Point(207, 371);
+            this.updateButton.Name = "updateButton";
+            this.updateButton.Size = new System.Drawing.Size(75, 23);
+            this.updateButton.TabIndex = 3;
+            this.updateButton.Text = "修正";
+            this.updateButton.UseVisualStyleBackColor = true;
+            // 
+            // displayButton
+            // 
+            this.displayButton.Enabled = false;
+            this.displayButton.Location = new System.Drawing.Point(126, 371);
+            this.displayButton.Name = "displayButton";
+            this.displayButton.Size = new System.Drawing.Size(75, 23);
+            this.displayButton.TabIndex = 2;
+            this.displayButton.Text = "表示";
+            this.displayButton.UseVisualStyleBackColor = true;
+            // 
+            // scheduleListBox
+            // 
+            this.scheduleListBox.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.scheduleListBox.FormattingEnabled = true;
+            this.scheduleListBox.ItemHeight = 12;
+            this.scheduleListBox.Location = new System.Drawing.Point(9, 34);
+            this.scheduleListBox.Name = "scheduleListBox";
+            this.scheduleListBox.Size = new System.Drawing.Size(354, 328);
+            this.scheduleListBox.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("ＭＳ ゴシック", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.label5.ForeColor = System.Drawing.SystemColors.ActiveCaption;
+            this.label5.Location = new System.Drawing.Point(7, 19);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 12);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "予定";
             // 
             // MainForm
             // 
@@ -470,6 +475,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MySchedule";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.dateselectGroup.ResumeLayout(false);

@@ -11,6 +11,9 @@ namespace MySchedule
 {
     public partial class MainForm : Form
     {
+        DateTime startdate, enddate;
+        int starttimeindex, endtimeindex;
+
         public MainForm()
         {
             InitializeComponent();
@@ -18,9 +21,10 @@ namespace MySchedule
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            DateTime startdate, enddate;
-            int starttimeindex, endtimeindex;
-
+            InitializeDate();
+        }
+        private void InitializeDate()
+        {
             monthCalendar1.MaxSelectionCount = 100;
 
             startdate = monthCalendar1.SelectionStart.Date;
@@ -32,9 +36,12 @@ namespace MySchedule
             starttimeindex = 46 - DateTime.Now.Hour * 2;
             if (DateTime.Now.Minute > 29)
             {
-                if(starttimeindex == 0){
+                if (starttimeindex == 0)
+                {
                     starttimeindex = 47;
-                }else{
+                }
+                else
+                {
                     starttimeindex--;
                 }
 
@@ -49,6 +56,67 @@ namespace MySchedule
             }
             starttimeDomainUpDown.SelectedIndex = starttimeindex;
             endtimeDomainUpDown.SelectedIndex = endtimeindex;
+
+            listviewGroup.Text = startTextBox.Text + " " + listviewGroup.Text; 
+        }
+
+        private void monthCalendar1_DateChanged(object sender, DateRangeEventArgs e)
+        {
+            startdate = monthCalendar1.SelectionStart.Date;
+            startTextBox.Text = String.Format("{0:yyyy/MM/dd}", startdate);
+
+            enddate = monthCalendar1.SelectionEnd.Date;
+            endTextBox.Text = String.Format("{0:yyyy/MM/dd}", enddate);
+
+            if (startTextBox.Text == endTextBox.Text)
+            {
+                starttimeDomainUpDown.Enabled = true;
+                endtimeDomainUpDown.Enabled = true;
+            }
+            else
+            {
+                starttimeDomainUpDown.Enabled = false;
+                endtimeDomainUpDown.Enabled = false;
+            }
+
+            listviewGroup.Text = startTextBox.Text + " 予定リスト表示";
+        }
+
+        private void clearButton_Click(object sender, EventArgs e)
+        {
+            ClearSubject();
+        }
+        private void ClearSubject() 
+        {
+            subjectTextBox.Text = null;
+            contentTextBox.Text = null;
+        }
+
+        private void inputButton_Click(object sender, EventArgs e)
+        {
+            string record;
+            int subjectcount = Encoding.GetEncoding("Shift_JIS").
+                GetByteCount(subjectTextBox.Text);
+            string subject = subjectTextBox.Text + new String(' ', 20 - subjectcount);
+
+            if (startTextBox.Text == endTextBox.Text)
+            {
+                label5.Text = "時間　　　　件名　　　　　　　　内容";
+                record = starttimeDomainUpDown.Text + "～" +
+                    endtimeDomainUpDown.Text + " " +
+                    subject + ":" + contentTextBox.Text;
+                scheduleListBox.Items.Add(record);
+                ClearSubject();
+            }
+            else
+            {
+                label5.Text = "期間　　　　件名　　　　　　　　内容";
+                record = startTextBox.Text.Substring(5) + "～" +
+                    endTextBox.Text.Substring(5) + " " + subject +
+                    ":" + contentTextBox.Text;
+                scheduleListBox.Items.Add(record);
+                ClearSubject();
+            }
         }
     }
 }

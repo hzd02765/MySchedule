@@ -194,6 +194,7 @@
             this.clearButton.TabIndex = 12;
             this.clearButton.Text = "クリア";
             this.clearButton.UseVisualStyleBackColor = true;
+            this.clearButton.Click += new System.EventHandler(this.clearButton_Click);
             // 
             // inputButton
             // 
@@ -203,6 +204,7 @@
             this.inputButton.TabIndex = 11;
             this.inputButton.Text = "登録";
             this.inputButton.UseVisualStyleBackColor = true;
+            this.inputButton.Click += new System.EventHandler(this.inputButton_Click);
             // 
             // endtimeDomainUpDown
             // 
@@ -395,6 +397,7 @@
             this.monthCalendar1.Location = new System.Drawing.Point(4, 24);
             this.monthCalendar1.Name = "monthCalendar1";
             this.monthCalendar1.TabIndex = 0;
+            this.monthCalendar1.DateChanged += new System.Windows.Forms.DateRangeEventHandler(this.monthCalendar1_DateChanged);
             // 
             // listviewGroup
             // 

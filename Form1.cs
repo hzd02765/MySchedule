@@ -95,28 +95,65 @@ namespace MySchedule
         private void inputButton_Click(object sender, EventArgs e)
         {
             string record;
-            int subjectcount = Encoding.GetEncoding("Shift_JIS").
-                GetByteCount(subjectTextBox.Text);
-            string subject = subjectTextBox.Text + new String(' ', 20 - subjectcount);
 
-            if (startTextBox.Text == endTextBox.Text)
+            if (subjectTextBox.Text != "" && contentTextBox.Text != "")
             {
-                label5.Text = "時間　　　　件名　　　　　　　　内容";
-                record = starttimeDomainUpDown.Text + "～" +
-                    endtimeDomainUpDown.Text + " " +
-                    subject + ":" + contentTextBox.Text;
-                scheduleListBox.Items.Add(record);
-                ClearSubject();
+                int subjectcount = Encoding.GetEncoding("Shift_JIS").
+                    GetByteCount(subjectTextBox.Text);
+                if (subjectcount > 20)
+                {
+                    MessageBox.Show("件名を短くしてください。", "予定登録エラー");
+                    return;
+                }
+
+                string subject = subjectTextBox.Text + new String(' ', 20 - subjectcount);
+
+                if (startTextBox.Text == endTextBox.Text)
+                {
+                    label5.Text = "時間　　　　件名　　　　　　　内容";
+                    record = starttimeDomainUpDown.Text + "～" +
+                        endtimeDomainUpDown.Text + " " +
+                        subject + ":" + contentTextBox.Text;
+                    scheduleListBox.Items.Add(record);
+                    ClearSubject();
+                }
+                else
+                {
+                    label5.Text = "期間　　　　件名　　　　　　　内容";
+                    record = startTextBox.Text.Substring(5) + "～" +
+                        endTextBox.Text.Substring(5) + " " + subject +
+                        ":" + contentTextBox.Text;
+                    scheduleListBox.Items.Add(record);
+                    ClearSubject();
+                }
             }
-            else
+            else 
             {
-                label5.Text = "期間　　　　件名　　　　　　　　内容";
-                record = startTextBox.Text.Substring(5) + "～" +
-                    endTextBox.Text.Substring(5) + " " + subject +
-                    ":" + contentTextBox.Text;
-                scheduleListBox.Items.Add(record);
-                ClearSubject();
+                MessageBox.Show("件名と内容を入力してください。","予定登録エラー");
             }
+        }
+
+        private void scheduleListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (scheduleListBox.SelectedIndex != -1)
+            {
+                string contents = (string)scheduleListBox.SelectedItem;
+                if (Encoding.GetEncoding("Shift_JIS").GetByteCount(contents) > 59)
+                {
+                    displayButton.Enabled = true;
+                }
+                else
+                {
+                    displayButton.Enabled = false;
+                }
+            }
+            updateButton.Enabled = true;
+            deleteButton.Enabled = true;
+        }
+
+        private void deleteButton_Click(object sender, EventArgs e)
+        {
+            scheduleListBox.Items.Remove(scheduleListBox.SelectedItem);
         }
     }
 }

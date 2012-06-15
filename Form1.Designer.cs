@@ -422,6 +422,7 @@
             this.deleteButton.TabIndex = 4;
             this.deleteButton.Text = "削除";
             this.deleteButton.UseVisualStyleBackColor = true;
+            this.deleteButton.Click += new System.EventHandler(this.deleteButton_Click);
             // 
             // updateButton
             // 
@@ -452,6 +453,7 @@
             this.scheduleListBox.Name = "scheduleListBox";
             this.scheduleListBox.Size = new System.Drawing.Size(354, 328);
             this.scheduleListBox.TabIndex = 1;
+            this.scheduleListBox.SelectedIndexChanged += new System.EventHandler(this.scheduleListBox_SelectedIndexChanged);
             // 
             // label5
             // 

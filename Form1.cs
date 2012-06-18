@@ -155,5 +155,12 @@ namespace MySchedule
         {
             scheduleListBox.Items.Remove(scheduleListBox.SelectedItem);
         }
+
+        //予定の表示
+        private void displayButton_Click(object sender, EventArgs e)
+        {
+            DisplayForm displayForm = new DisplayForm();
+            displayForm.ShowDialog();
+        }
     }
 }

@@ -443,6 +443,7 @@
             this.displayButton.TabIndex = 2;
             this.displayButton.Text = "表示";
             this.displayButton.UseVisualStyleBackColor = true;
+            this.displayButton.Click += new System.EventHandler(this.displayButton_Click);
             // 
             // scheduleListBox
             // 

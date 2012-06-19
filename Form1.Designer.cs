@@ -433,6 +433,7 @@
             this.updateButton.TabIndex = 3;
             this.updateButton.Text = "修正";
             this.updateButton.UseVisualStyleBackColor = true;
+            this.updateButton.Click += new System.EventHandler(this.updateButton_Click);
             // 
             // displayButton
             // 

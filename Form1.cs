@@ -162,5 +162,12 @@ namespace MySchedule
             DisplayForm displayForm = new DisplayForm();
             displayForm.ShowDialog();
         }
+
+        //予定の修正
+        private void updateButton_Click(object sender, EventArgs e)
+        {
+            UpdateForm updateForm = new UpdateForm();
+            updateForm.ShowDialog();
+        }
     }
 }

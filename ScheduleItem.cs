@@ -43,11 +43,11 @@ namespace MySchedule
                 return contents;
             }
         }
-        public abstract string[] GetField;
+        public abstract string[] GetField();
     }
-    class Shortitem : ScheduleItem
+    class ShortItem : ScheduleItem
     {
-        public Shortitem(string sdate, string start, string end, string subject, string contents)
+        public ShortItem(string sdate, string start, string end, string subject, string contents)
             : base(subject, contents)
         {
             startDateTime = DateTime.Parse(sdate + " " + start);

@@ -13,6 +13,7 @@ namespace MySchedule
     {
         DateTime startdate, enddate;
         int starttimeindex, endtimeindex;
+        ScheduleList listitem;
 
         public MainForm()
         {
@@ -22,6 +23,7 @@ namespace MySchedule
         private void MainForm_Load(object sender, EventArgs e)
         {
             InitializeDate();
+            listitem = new ScheduleList();
         }
         private void InitializeDate()
         {
@@ -94,7 +96,7 @@ namespace MySchedule
 
         private void inputButton_Click(object sender, EventArgs e)
         {
-            string record;
+            //string record;
 
             if (subjectTextBox.Text != "" && contentTextBox.Text != "")
             {
@@ -111,21 +113,52 @@ namespace MySchedule
                 if (startTextBox.Text == endTextBox.Text)
                 {
                     label5.Text = "時間　　　　件名　　　　　　　内容";
+                    /*
                     record = starttimeDomainUpDown.Text + "～" +
                         endtimeDomainUpDown.Text + " " +
                         subject + ":" + contentTextBox.Text;
                     scheduleListBox.Items.Add(record);
                     ClearSubject();
+                     */
+                    ShortItem shortitem = new ShortItem(startTextBox.Text, starttimeDomainUpDown.Text, endtimeDomainUpDown.Text, subject, contentTextBox.Text);
+                    if (listitem.AddShortitems(shortitem))
+                    {
+                        scheduleListBox.Items.Clear();
+                        foreach (ShortItem shorts in listitem.Shortitems)
+                        {
+                            scheduleListBox.Items.Add(shorts.Itemall);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("既に存在する予定です。","その日の予定エラー");
+                    }
                 }
                 else
                 {
                     label5.Text = "期間　　　　件名　　　　　　　内容";
+                    /*
                     record = startTextBox.Text.Substring(5) + "～" +
                         endTextBox.Text.Substring(5) + " " + subject +
                         ":" + contentTextBox.Text;
                     scheduleListBox.Items.Add(record);
                     ClearSubject();
+                     */
+                    LongItem longitem = new LongItem(startTextBox.Text, endTextBox.Text, subject, contentTextBox.Text);
+                    if (listitem.AddLongitems(longitem))
+                    {
+                        scheduleListBox.Items.Clear();
+                        foreach (LongItem longs in listitem.Longitems)
+                        {
+                            scheduleListBox.Items.Add(longs.Itemall);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("既に存在する予定です。","長期の予定エラー");
+                    }
                 }
+                ClearSubject();
             }
             else 
             {
@@ -153,7 +186,22 @@ namespace MySchedule
 
         private void deleteButton_Click(object sender, EventArgs e)
         {
+            if (scheduleListBox.SelectedIndex == -1) return;
+            if (scheduleListBox.SelectedItem.ToString().Substring(2, 1) == ":")
+            {
+                listitem.DeleteShortitems(scheduleListBox.SelectedIndex);
+            }
+            else
+            {
+                listitem.DeleteLongitems(scheduleListBox.SelectedIndex);
+            }
             scheduleListBox.Items.Remove(scheduleListBox.SelectedItem);
+            if (scheduleListBox.Items.Count == 0)
+            {
+                displayButton.Enabled = false;
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+            }
         }
 
         //予定の表示

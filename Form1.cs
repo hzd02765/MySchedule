@@ -207,15 +207,108 @@ namespace MySchedule
         //予定の表示
         private void displayButton_Click(object sender, EventArgs e)
         {
+            if (scheduleListBox.SelectedIndex == -1) return;
             DisplayForm displayForm = new DisplayForm();
+
+            if (label5.Text.IndexOf("時間") >= 0)
+            {
+                InputForm(displayForm, listitem.SelectShortitems(scheduleListBox.SelectedIndex), "short");
+            }
+            else
+            {
+                InputForm(displayForm, listitem.SelectLongitems(scheduleListBox.SelectedIndex), "long");
+            }
+
             displayForm.ShowDialog();
+        }
+        private void InputForm(DisplayForm displayForm, ScheduleItem scheduleitme, string type)
+        {
+            string[] field = scheduleitme.GetField();
+            if (type == "short")
+            {
+                displayForm.startdateTextBox.Text = field[0];
+                displayForm.enddateTextBox.Text = "";
+                displayForm.starttimeDomainUpDown.SelectedIndex = TimeTransformIndex(field[1]);
+                displayForm.endtimeDomainUpDown.SelectedIndex = TimeTransformIndex(field[2]);
+            }
+            else
+            {
+                displayForm.startdateTextBox.Text = field[0];
+                displayForm.enddateTextBox.Text = field[1];
+                displayForm.starttimeDomainUpDown.Text = "";
+                displayForm.endtimeDomainUpDown.Text = "";
+            }
+            displayForm.subjectTextBox.Text = scheduleitme.Subject.Trim();
+            displayForm.contentTextBox.Text = scheduleitme.Contents;
+            displayForm.okButton.Select();
+        }
+        private int TimeTransformIndex(string timestring)
+        {
+            for (int i = 0; i < this.starttimeDomainUpDown.Items.Count; i++)
+            {
+                if (this.starttimeDomainUpDown.Items[i].ToString() == timestring)
+                {
+                    return i;
+                }
+            }
+            return -1;
         }
 
         //予定の修正
         private void updateButton_Click(object sender, EventArgs e)
         {
+            bool shortflg = true;
+            if (scheduleListBox.SelectedIndex == -1) return;
+
             UpdateForm updateForm = new UpdateForm();
+
+            if (label5.Text.IndexOf("時間") >= 0)
+            {
+                updateForm.enddateTextBox.Enabled = false;
+                InputForm2(updateForm, listitem.SelectShortitems(scheduleListBox.SelectedIndex), "short");
+            }
+            else
+            {
+                updateForm.starttimeDomainUpDown.Enabled = false;
+                updateForm.endtimeDomainUpDown.Enabled = false;
+                InputForm2(updateForm, listitem.SelectLongitems(scheduleListBox.SelectedIndex), "long");
+                shortflg = false;
+            }
+
             updateForm.ShowDialog();
+
+            if (updateForm.DialogResult == DialogResult.OK)
+            {
+                if (shortflg)
+                {
+                    UpdateList(updateForm, "short");
+                }
+                else 
+                {
+                    UpdateList(updateForm, "long");
+                }
+            }
+        }
+        private void InputForm2(UpdateForm updateForm, ScheduleItem scheduleitme, string type)
+        {
+            string[] field = scheduleitme.GetField();
+            if (type == "short")
+            {
+                updateForm.startdateTextBox.Text = field[0];
+                updateForm.enddateTextBox.Text = field[0];
+                updateForm.starttimeDomainUpDown.SelectedIndex = TimeTransformIndex(field[1]);
+                updateForm.endtimeDomainUpDown.SelectedIndex = TimeTransformIndex(field[2]);
+            }
+            else
+            {
+                updateForm.startdateTextBox.Text = field[0];
+                updateForm.enddateTextBox.Text = field[1];
+                updateForm.starttimeDomainUpDown.Text = "";
+                updateForm.endtimeDomainUpDown.Text = "";
+            }
+            updateForm.subjectTextBox.Text = scheduleitme.Subject.Trim();
+            updateForm.contentTextBox.Text = scheduleitme.Contents;
+            updateForm.okButton.Select();
         }
     }
 }

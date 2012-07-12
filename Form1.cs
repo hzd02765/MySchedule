@@ -310,5 +310,49 @@ namespace MySchedule
             updateForm.contentTextBox.Text = scheduleitme.Contents;
             updateForm.okButton.Select();
         }
+        private void UpdateList(UpdateForm updateForm, string type)
+        {
+            int subjectcount = Encoding.GetEncoding("Shift_JIS").GetByteCount(updateForm.subjectTextBox.Text);
+            if (subjectcount > 20)
+            {
+                MessageBox.Show("件名を短くしてください", "予定登録エラー");
+                return;
+            }
+            string subject = updateForm.subjectTextBox.Text + new String(' ', 20 - subjectcount);
+            if (type == "short")
+            {
+                ShortItem shortitem = new ShortItem(updateForm.startdateTextBox.Text, updateForm.starttimeDomainUpDown.Text, updateForm.endtimeDomainUpDown.Text, subject, updateForm.contentTextBox.Text);
+                if (listitem.AddShortitems(shortitem))
+                {
+                    listitem.DeleteShortitems(scheduleListBox.SelectedIndex);
+                    scheduleListBox.Items.Clear();
+                    foreach (ShortItem shorts in listitem.Shortitems)
+                    {
+                        scheduleListBox.Items.Add(shorts.Itemall);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("既に存在する予定です", "その日の予定エラー");
+                }
+            }
+            else
+            {
+                LongItem longitem = new LongItem(updateForm.startdateTextBox.Text, updateForm.enddateTextBox.Text, subject, updateForm.contentTextBox.Text);
+                if (listitem.AddLongitems(longitem))
+                {
+                    listitem.DeleteLongitems(scheduleListBox.SelectedIndex);
+                    scheduleListBox.Items.Clear();
+                    foreach (LongItem longs in listitem.Longitems)
+                    {
+                        scheduleListBox.Items.Add(longs.Itemall);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("既に存在する予定です", "長期の予定エラー");
+                }
+            }
+        }
     }
 }

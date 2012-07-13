@@ -113,5 +113,19 @@ namespace MySchedule
                 return longitems;
             }
         }
+        public List<ShortItem> GetCurrentShortitems(DateTime startdate)
+        {
+            return shortitems.FindAll(delegate(ShortItem shortitem)
+            {
+                return shortitem.StartDateTime.Date == startdate.Date;
+            });
+        }
+        public List<LongItem> GetCurrentLongitems(DateTime startdate)
+        {
+            return longitems.FindAll(delegate(LongItem longitem)
+            {
+                return longitem.StartDateTime.Date <= startdate.Date && longitem.EndDateTime.Date >= startdate.Date;
+            });
+        }
     }
 }

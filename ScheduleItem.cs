@@ -44,6 +44,20 @@ namespace MySchedule
             }
         }
         public abstract string[] GetField();
+        public DateTime StartDateTime
+        {
+            get
+            {
+                return startDateTime;
+            }
+        }
+        public DateTime EndDateTime
+        {
+            get
+            {
+                return endDateTime;
+            }
+        }
     }
     class ShortItem : ScheduleItem
     {

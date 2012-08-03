@@ -64,9 +64,21 @@ namespace MySchedule
         public ShortItem(string sdate, string start, string end, string subject, string contents)
             : base(subject, contents)
         {
-            startDateTime = DateTime.Parse(sdate + " " + start);
-            endDateTime = DateTime.Parse(sdate + " " + end);
-            itemall = start + "～" + end + " " + subject + ":" + contents;
+            //startDateTime = DateTime.Parse(sdate + " " + start);
+            //endDateTime = DateTime.Parse(sdate + " " + end);
+            //itemall = start + "～" + end + " " + subject + ":" + contents;
+            if (DateTime.Parse(sdate + " " + start) <= DateTime.Parse(sdate + " " + end))
+            {
+                startDateTime = DateTime.Parse(sdate + " " + start);
+                endDateTime = DateTime.Parse(sdate + " " + end);
+                itemall = start + "～" + end + " " + subject + ":" + contents;
+            }
+            else
+            {
+                endDateTime = DateTime.Parse(sdate + " " + start);
+                startDateTime = DateTime.Parse(sdate + " " + end);
+                itemall = end  + "～" + start + " " + subject + ":" + contents;
+            }
         }
         public override string[] GetField()
         {

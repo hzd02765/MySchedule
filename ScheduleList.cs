@@ -18,7 +18,8 @@ namespace MySchedule
 
         public bool AddShortitems(ShortItem sitem)
         {
-            if (FindShortitem(sitem))
+            //if (FindShortitem(sitem))
+            if (SelectShortitems(sitem.StartDateTime, sitem.Itemall) == null)
             {
                 shortitems.Add(sitem);
                 return true;
@@ -26,40 +27,57 @@ namespace MySchedule
             return false;
         }
 
-        public void DeleteShortitems(int index)
+        //public void DeleteShortitems(int index)
+        //{
+        //    shortitems.RemoveAt(index);
+        //}
+
+        public void DeleteShortitems(DateTime startdate, string itemString)
         {
-            shortitems.RemoveAt(index);
+            shortitems.RemoveAll(delegate(ShortItem s)
+            {
+                return s.StartDateTime.Date == startdate.Date && s.Itemall == itemString;
+            });
         }
 
-        public ShortItem SelectShortitems(int index)
+        //public ShortItem SelectShortitems(int index)
+        //{
+        //    int loop = 0;
+        //    foreach (ShortItem sitem in shortitems)
+        //    {
+        //        if (loop == index)
+        //        {
+        //            return sitem;
+        //        }
+        //        loop++;
+        //    }
+        //    return null;
+        //}
+
+        public ShortItem SelectShortitems(DateTime startdate, string itemString)
         {
-            int loop = 0;
-            foreach (ShortItem sitem in shortitems)
+            return shortitems.Find(delegate(ShortItem s)
             {
-                if (loop == index)
-                {
-                    return sitem;
-                }
-                loop++;
-            }
-            return null;
+                return s.StartDateTime.Date == startdate.Date && s.Itemall == itemString;
+            });
         }
 
-        public bool FindShortitem(ShortItem sitem)
-        {
-            foreach (ShortItem sitem2 in shortitems)
-            {
-                if (sitem2.Itemall == sitem.Itemall)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //public bool FindShortitem(ShortItem sitem)
+        //{
+        //    foreach (ShortItem sitem2 in shortitems)
+        //    {
+        //        if (sitem2.Itemall == sitem.Itemall)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
         public bool AddLongitems(LongItem litem)
         {
-            if (FindLongitem(litem))
+            //if (FindLongitem(litem))
+            if (SelectLongitems(litem.Itemall) == null)
             {
                 longitems.Add(litem);
                 return true;
@@ -67,36 +85,52 @@ namespace MySchedule
             return false;
         }
 
-        public void DeleteLongitems(int index)
+        //public void DeleteLongitems(int index)
+        //{
+        //    longitems.RemoveAt(index);
+        //}
+
+        public void DeleteLongitems(string itemString)
         {
-            longitems.RemoveAt(index);
+            longitems.RemoveAll(delegate(LongItem l)
+            {
+                return l.Itemall == itemString;
+            });
         }
 
-        public LongItem SelectLongitems(int index)
+        //public LongItem SelectLongitems(int index)
+        //{
+        //    int loop = 0;
+        //    foreach (LongItem litem in longitems)
+        //    {
+        //        if (loop == index)
+        //        {
+        //            return litem;
+        //        }
+        //        loop++;
+        //    }
+        //    return null;
+        //}
+
+        public LongItem SelectLongitems(string itemString)
         {
-            int loop = 0;
-            foreach (LongItem litem in longitems)
+            return longitems.Find(delegate(LongItem l)
             {
-                if (loop == index)
-                {
-                    return litem;
-                }
-                loop++;
-            }
-            return null;
+                return l.Itemall == itemString;
+            });
         }
 
-        public bool FindLongitem(LongItem litem)
-        {
-            foreach (LongItem litem2 in longitems)
-            {
-                if (litem2.Itemall == litem.Itemall)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
+        //public bool FindLongitem(LongItem litem)
+        //{
+        //    foreach (LongItem litem2 in longitems)
+        //    {
+        //        if (litem2.Itemall == litem.Itemall)
+        //        {
+        //            return false;
+        //        }
+        //    }
+        //    return true;
+        //}
 
         public List<ShortItem> Shortitems
         {

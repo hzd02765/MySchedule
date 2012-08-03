@@ -84,6 +84,32 @@ namespace MySchedule
             }
 
             listviewGroup.Text = startTextBox.Text + " 予定リスト表示";
+            RefreshListBox();
+        }
+
+        private void RefreshListBox()
+        {
+            scheduleListBox.Items.Clear();
+            if (startTextBox.Text == endTextBox.Text)
+            {
+                foreach (ShortItem s in listitem.GetCurrentShortitems(startdate))
+                {
+                    scheduleListBox.Items.Add(s.Itemall);
+                }
+            }
+            else
+            {
+                foreach (LongItem l in listitem.GetCurrentLongitems(startdate))
+                {
+                    scheduleListBox.Items.Add(l.Itemall);
+                }
+            }
+            if (scheduleListBox.Items.Count == 0)
+            {
+                updateButton.Enabled = false;
+                deleteButton.Enabled = false;
+                displayButton.Enabled = false;
+            }
         }
 
         private void clearButton_Click(object sender, EventArgs e)
@@ -134,7 +160,8 @@ namespace MySchedule
                     if (listitem.AddShortitems(shortitem))
                     {
                         scheduleListBox.Items.Clear();
-                        foreach (ShortItem shorts in listitem.Shortitems)
+                        //foreach (ShortItem shorts in listitem.Shortitems)
+                        foreach(ShortItem shorts in listitem.GetCurrentShortitems(startdate))
                         {
                             scheduleListBox.Items.Add(shorts.Itemall);
                         }
@@ -165,7 +192,8 @@ namespace MySchedule
                     if (listitem.AddLongitems(longitem))
                     {
                         scheduleListBox.Items.Clear();
-                        foreach (LongItem longs in listitem.Longitems)
+                        //foreach (LongItem longs in listitem.Longitems)
+                        foreach (LongItem longs in listitem.GetCurrentLongitems(startdate))
                         {
                             scheduleListBox.Items.Add(longs.Itemall);
                         }
@@ -206,11 +234,13 @@ namespace MySchedule
             if (scheduleListBox.SelectedIndex == -1) return;
             if (scheduleListBox.SelectedItem.ToString().Substring(2, 1) == ":")
             {
-                listitem.DeleteShortitems(scheduleListBox.SelectedIndex);
+                //listitem.DeleteShortitems(scheduleListBox.SelectedIndex);
+                listitem.DeleteShortitems(startdate, scheduleListBox.SelectedItem.ToString());
             }
             else
             {
-                listitem.DeleteLongitems(scheduleListBox.SelectedIndex);
+                //listitem.DeleteLongitems(scheduleListBox.SelectedIndex);
+                listitem.DeleteLongitems(scheduleListBox.SelectedItem.ToString());
             }
             scheduleListBox.Items.Remove(scheduleListBox.SelectedItem);
             if (scheduleListBox.Items.Count == 0)
@@ -229,11 +259,13 @@ namespace MySchedule
 
             if (label5.Text.IndexOf("時間") >= 0)
             {
-                InputForm(displayForm, listitem.SelectShortitems(scheduleListBox.SelectedIndex), "short");
+                //InputForm(displayForm, listitem.SelectShortitems(scheduleListBox.SelectedIndex), "short");
+                InputForm(displayForm, listitem.SelectShortitems(startdate, scheduleListBox.SelectedItem.ToString()), "short");
             }
             else
             {
-                InputForm(displayForm, listitem.SelectLongitems(scheduleListBox.SelectedIndex), "long");
+                //InputForm(displayForm, listitem.SelectLongitems(scheduleListBox.SelectedIndex), "long");
+                InputForm(displayForm, listitem.SelectLongitems(scheduleListBox.SelectedItem.ToString()), "long");
             }
 
             displayForm.ShowDialog();
@@ -282,13 +314,15 @@ namespace MySchedule
             if (label5.Text.IndexOf("時間") >= 0)
             {
                 updateForm.enddateTextBox.Enabled = false;
-                InputForm2(updateForm, listitem.SelectShortitems(scheduleListBox.SelectedIndex), "short");
+                //InputForm2(updateForm, listitem.SelectShortitems(scheduleListBox.SelectedIndex), "short");
+                InputForm2(updateForm, listitem.SelectShortitems(startdate, scheduleListBox.SelectedItem.ToString()), "short");
             }
             else
             {
                 updateForm.starttimeDomainUpDown.Enabled = false;
                 updateForm.endtimeDomainUpDown.Enabled = false;
-                InputForm2(updateForm, listitem.SelectLongitems(scheduleListBox.SelectedIndex), "long");
+                //InputForm2(updateForm, listitem.SelectLongitems(scheduleListBox.SelectedIndex), "long");
+                InputForm2(updateForm, listitem.SelectLongitems(scheduleListBox.SelectedItem.ToString()), "long");
                 shortflg = false;
             }
 
@@ -341,9 +375,11 @@ namespace MySchedule
                 ShortItem shortitem = new ShortItem(updateForm.startdateTextBox.Text, updateForm.starttimeDomainUpDown.Text, updateForm.endtimeDomainUpDown.Text, subject, updateForm.contentTextBox.Text);
                 if (listitem.AddShortitems(shortitem))
                 {
-                    listitem.DeleteShortitems(scheduleListBox.SelectedIndex);
+                    //listitem.DeleteShortitems(scheduleListBox.SelectedIndex);
+                    listitem.DeleteShortitems(startdate, scheduleListBox.SelectedItem.ToString());
                     scheduleListBox.Items.Clear();
-                    foreach (ShortItem shorts in listitem.Shortitems)
+                    //foreach (ShortItem shorts in listitem.Shortitems)
+                    foreach (ShortItem shorts in listitem.GetCurrentShortitems(startdate))
                     {
                         scheduleListBox.Items.Add(shorts.Itemall);
                     }
@@ -358,9 +394,11 @@ namespace MySchedule
                 LongItem longitem = new LongItem(updateForm.startdateTextBox.Text, updateForm.enddateTextBox.Text, subject, updateForm.contentTextBox.Text);
                 if (listitem.AddLongitems(longitem))
                 {
-                    listitem.DeleteLongitems(scheduleListBox.SelectedIndex);
+                    //listitem.DeleteLongitems(scheduleListBox.SelectedIndex);
+                    listitem.DeleteLongitems(scheduleListBox.SelectedItem.ToString());
                     scheduleListBox.Items.Clear();
-                    foreach (LongItem longs in listitem.Longitems)
+                    //foreach (LongItem longs in listitem.Longitems)
+                    foreach (LongItem longs in listitem.GetCurrentLongitems(startdate))
                     {
                         scheduleListBox.Items.Add(longs.Itemall);
                     }
